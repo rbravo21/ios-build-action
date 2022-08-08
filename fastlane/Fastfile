@@ -61,10 +61,11 @@ platform :ios do
     end
 
     update_code_signing_settings(
-      use_automatic_signing: false,
+      use_automatic_signing: true,
+      team_id: ENV['TEAM_ID'],
       path: ENV['PROJECT_PATH'],
-      code_sign_identity: ENV['CODE_SIGNING_IDENTITY'],
-      targets: update_targets
+      targets: update_targets,
+      bundle_identifier: ENV['BUNDLE_IDENTIFIER']
     )
 
     if @profiles.length == 1
