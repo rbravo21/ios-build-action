@@ -237,9 +237,7 @@ platform :ios do
       end
     end
 
-    if !ENV['AUTH_KEY_P8'].empty?
-      File.write('../AuthKey.p8', Base64.decode64(ENV['AUTH_KEY_P8']))
-    end
+    File.write('../AuthKey.p8', Base64.decode64(ENV['AUTH_KEY_P8']))
 
     @profiles = []
     if ENV['MOBILEPROVISION_PATH'].empty?
