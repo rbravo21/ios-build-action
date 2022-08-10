@@ -158,7 +158,7 @@ platform :ios do
       export_options: use_export_options ? ENV['EXPORT_OPTIONS'] : nil,
       skip_profile_detection: use_export_options,
       sdk: use_build_sdk ? ENV['BUILD_SDK'] : nil,
-      destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil
+      destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil,
       xcargs: "-allowProvisioningUpdates"
     )
 
