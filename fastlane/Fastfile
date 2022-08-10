@@ -5,7 +5,6 @@ platform :ios do
   lane :export_ipa do
     decode_file
     
-    @authkey
     app_store_connect_api_key(
       key_id: ENV['APPLE_KEY_ID'],
       issuer_id: ENV['APPLE_ISSUER_ID'],
@@ -235,12 +234,8 @@ platform :ios do
         )
       else
         File.write('../ios-build.p12', Base64.decode64(ENV['P12_BASE64']))
+        File.write('../AuthKey.p8', Base64.decode64(ENV['AUTH_KEY_P8']))
       end
-    end
-
-    @authkey = ENV['AUTH_KEY_P8'].empty?
-    if @authkey
-      File.write('../AuthKey.p8', Base64.decode64(ENV['AUTH_KEY_P8']))
     end
 
     @profiles = []
