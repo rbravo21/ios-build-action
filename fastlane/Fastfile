@@ -4,6 +4,14 @@ platform :ios do
   desc 'Export ipa'
   lane :export_ipa do
     decode_file
+    
+    app_store_connect_api_key(
+      key_id: ENV['APPLE_KEY_ID'],
+      issuer_id: ENV['APPLE_ISSUER_ID'],
+      key_filepath: "./AuthKey.p8",
+      duration: 1200, # optional (maximum 1200)
+      in_house: false # optional but may be required if using match/sigh
+    )
 
     keychain_password = SecureRandom.uuid
 
@@ -162,7 +170,7 @@ platform :ios do
       xcargs: "-allowProvisioningUpdates"
     )
 
-    delete_keychain(name: 'ios-build.keychain')
+    delete_keychain(name: 'ios-build.keychain')ñ
   end
 
   # https://github.com/CocoaPods/Xcodeproj/issues/505#issuecomment-584699008
@@ -227,6 +235,10 @@ platform :ios do
       else
         File.write('../ios-build.p12', Base64.decode64(ENV['P12_BASE64']))
       end
+    end
+
+    if !ENV['AUTH_KEY_P8'].empty?
+      File.write('../AuthKey.p8', Base64.decode64(ENV['AUTH_KEY_P8']))
     end
 
     @profiles = []
