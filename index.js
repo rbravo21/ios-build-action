@@ -49,7 +49,10 @@ async function run() {
     );
     process.env.BUILD_SDK = core.getInput("build-sdk");
     process.env.BUILD_DESTINATION = core.getInput("build-destination");
-
+    process.env.AUTH_KEY_P8 = core.getInput("auth-key-p8");
+    process.env.APPLE_KEY_ID = core.getInput("apple-key-id");
+    process.env.APPLE_ISSUER_ID = core.getInput("apple-issuer-id");
+    
     // Execute build.sh
     await exec.exec(`bash ${__dirname}/../build.sh`);
   } catch (error) {

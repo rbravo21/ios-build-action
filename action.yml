@@ -82,6 +82,18 @@ inputs:
     description: "Path for Swift Package Manager dependencies"
     required: false
     default: ""
+  auth-key-p8:
+    description: "Base64 encoded auth key P8 file"
+    required: false
+    default: ""
+  apple-key-id:
+    description: "Apple Auth key ID"
+    required: false
+    default: ""
+  apple-issuer-id:
+    description: "Apple app store issuer ID"
+    required: false
+    default: ""
 runs:
   using: "node12"
   main: "dist/index.js"
