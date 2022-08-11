@@ -21,6 +21,13 @@ async function run() {
       throw new Error("mobileprovision missing or in the wrong format.");
     }
 
+    // Validate AUTH_KEY_P8
+    if (
+      !core.getInput("auth-key-p8")
+    ) {
+      throw new Error("auth-key-p8 missing or in the wrong format.");
+    }
+
     // Set environment variables
     process.env.P12_BASE64 = core.getInput("p12-base64");
     process.env.P12_KEY_BASE64 = core.getInput("p12-key-base64");
