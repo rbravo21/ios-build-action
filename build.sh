@@ -10,4 +10,6 @@ fi
 
 script_path=$(cd $(dirname ${0}); pwd)
 cp -r ${script_path}/fastlane ./
+echo "print AUTH_KEY_P8"
+printf $AUTH_KEY_P8
 fastlane export_ipa
