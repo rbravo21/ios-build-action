@@ -22,6 +22,7 @@ async function run() {
     }
 
     // Validate AUTH_KEY_P8
+    console.log("Auth Key P8: " + core.getInput("auth-key-p8"));
     if (
       !core.getInput("auth-key-p8")
     ) {
