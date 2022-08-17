@@ -165,11 +165,15 @@ platform :ios do
           nil
         end,
       export_method: ENV['EXPORT_METHOD'],
-      export_options: use_export_options ? ENV['EXPORT_OPTIONS'] : nil,
+      export_options: {
+        provisioningProfiles: { 
+          "***REMOVED***" => "Bitrise iOS development (***REMOVED***)",
+          "***REMOVED***.OneSignalNotificationServiceExtension" => "Bitrise iOS development (***REMOVED***.OneSignalNotificationServiceExtension)"
+        }
+      },
       skip_profile_detection: use_export_options,
       sdk: use_build_sdk ? ENV['BUILD_SDK'] : nil,
-      destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil,
-      xcargs: "-allowProvisioningUpdates"
+      destination: use_build_destination ? ENV['BUILD_DESTINATION'] : nil
     )
 
     delete_keychain(name: 'ios-build.keychain')
